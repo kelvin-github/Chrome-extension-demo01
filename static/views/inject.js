@@ -25,19 +25,16 @@ document.getElementById("root").innerHTML = html
 
 let getDataBtn1 = document.getElementById("getDataBtn1")
 getDataBtn1.onclick = function(){
-    let headings01 = document.evaluate('/html/body/div[4]/div/div[1]/div[1]/ul/li[1]/h3/a/text()', document, null, XPathResult.ANY_TYPE, null );
-    let thisHeading01 = headings01.iterateNext()
-    let name01 = thisHeading01.textContent
-    name01 = name01.trim();
-    let headings02 = document.evaluate('/html/body/div[4]/div/div[1]/div[1]/ul/li[2]/h3/a/text()', document, null, XPathResult.ANY_TYPE, null );
-    let thisHeading02 = headings02.iterateNext()
-    let name02 = thisHeading02.textContent
-    name02 = name02.trim();
-
-    alert(
-        name01+"<br/>"+
-        name02+"<br/>"
-    );
+    let arrayName = []
+    for(let i=1;i<15;i++){
+        let headings01 = document.evaluate('/html/body/div[4]/div/div[1]/div[1]/ul/li['+i+']/h3/a/text()', document, null, XPathResult.ANY_TYPE, null );
+        let thisHeading01 = headings01.iterateNext()
+        let name01 = thisHeading01.textContent
+        name01 = name01.trim();
+        arrayName.push(name01)
+    }    
+    alert(JSON.stringify(arrayName))
+    
 }
 
 let getDataBtn2 = document.getElementById("getDataBtn2")
